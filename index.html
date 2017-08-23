@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="author" content="Rahul">
+  <title>Clasic Game - Rock Scissors Paper</title>
+</head>
+<body>
+	<p id="result1"></p>
+	<p id="result2"></p>
+	<p id="result3"></p>
+<script>
+// Part 1 - User Input
+var userInput = prompt('Pick one Rock, Scissors and Paper', 'Rock');
+userInput = userInput.toLowerCase();
+
+
+//Part 2 - Computer Input
+function getComputerChoice () {
+  var computerNo = Math.floor(Math.random() * 3);
+  if (computerNo === 0) {
+      return 'rock';
+    	} else if (computerNo === 1) {
+        return 'scissors';
+      } else {
+        return 'paper';
+      }
+}
+
+var computerChoice = getComputerChoice();
+
+
+// Part 3 - Determine winner function goes here
+function determineWinner (userInput, computerChoice) {
+	if (userInput === computerChoice) {
+      return 'Game was tie!!!';
+      }
+
+  if (userInput === 'rock') {
+            if (computerChoice === 'paper') {
+                return 'Computer won!!!';
+                } else {
+                  return 'User won!!!';
+                }
+            }
+    		if (userInput === 'paper') {
+            if (computerChoice === 'scissors') {
+                return 'Computer won!!!';
+                } else {
+                  return 'User won!!!';
+                }
+            }
+    		if (userInput === 'scissors') {
+            if (computerChoice === 'rock') {
+                return 'Computer won!!!';
+                } else {
+                  return 'User won!!!';
+                }
+            }
+}
+
+// Part 4 - Play game function goes here
+function playGame () {
+	var userChoice = userInput;
+  var systemChoice = getComputerChoice();
+  document.getElementById('result1').innerHTML = 'You threw: ' + userChoice.toUpperCase();
+  document.getElementById('result2').innerHTML = 'The computer threw: ' + systemChoice.toUpperCase();
+  document.getElementById('result3').innerHTML = determineWinner (userChoice, systemChoice);
+}
+
+playGame();
+</script>
+</body>
+</html>
